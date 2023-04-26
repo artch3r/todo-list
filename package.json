@@ -1,0 +1,20 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "To Do list ",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd frontend && npm ci",
+    "start": "cd frontend && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artch3r/todo-list.git"
+  },
+  "author": "artch3r",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artch3r/todo-list/issues"
+  },
+  "homepage": "https://github.com/artch3r/todo-list#readme"
+}
