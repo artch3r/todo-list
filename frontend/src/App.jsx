@@ -4,7 +4,7 @@ const App = () => {
   const { t } = useTranslation();
 
   return (
-    <div>{t('hello')}</div>
+    <div className="text-center">{t('hello')}</div>
   );
 };
 
