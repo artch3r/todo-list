@@ -1,11 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import Todos from './components/Todos.jsx';
 
-const App = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="text-center">{t('hello')}</div>
-  );
-};
+const App = () => (
+  <Todos />
+);
 
 export default App;
