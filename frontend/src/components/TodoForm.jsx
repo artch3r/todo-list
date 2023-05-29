@@ -19,7 +19,7 @@ const TodoForm = () => {
       name: '',
     },
     validationSchema: yup.object().shape({
-      name: yup.string().required('requiredField').min(3, 'incorrectMinLength').max(20, 'incorrectMaxLength'),
+      name: yup.string().required('requiredField').min(3, 'incorrectMinLength').max(65, 'incorrectMaxLength'),
     }),
     onSubmit: ({ name }, { resetForm, setSubmitting }) => {
       const todo = { name, status: 'active', id: uniqueId() };

@@ -1,22 +1,18 @@
-import { Container, Card } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Container, Card, Button } from 'react-bootstrap';
 import TodoForm from './TodoForm';
-import { selectCurrentTodos } from '../slices/todosSlice';
+import TodoList from './TodoList';
 
-const Todos = () => {
-  const currentTodos = useSelector(selectCurrentTodos);
-  console.log('currentTodos', currentTodos);
-
-  return (
-    <Container className="vh-100 d-flex align-items-center">
-      <Card className="bg-light align-middle w-75 h-75 mx-auto">
-        <h1 className="text-center text-secondary mt-3">Список Дел</h1>
-        <Card className="mx-5 mb-5 mt-3 h-100">
-          <TodoForm />
-        </Card>
+const Todos = () => (
+  <Container className="vh-100 d-flex align-items-center">
+    <Card className="bg-light align-middle w-75 h-75 mx-auto">
+      <h1 className="text-center text-secondary mt-3">Список Дел</h1>
+      <Card className="mx-5 mb-5 mt-3 h-100 overflow-hidden">
+        <TodoForm />
+        <TodoList />
+        <Button className="mb-3 w-75 mx-auto">Hello</Button>
       </Card>
-    </Container>
-  );
-};
+    </Card>
+  </Container>
+);
 
 export default Todos;
