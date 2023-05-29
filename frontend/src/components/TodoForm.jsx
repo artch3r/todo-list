@@ -1,12 +1,18 @@
 import { Form, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { uniqueId } from 'lodash';
 import { addTodo } from '../slices/todosSlice';
 
 const TodoForm = () => {
   const dispatch = useDispatch();
+  const todoInputRef = useRef();
+
+  useEffect(() => {
+    todoInputRef.current.focus();
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -35,6 +41,7 @@ const TodoForm = () => {
           onChange={formik.handleChange}
           isInvalid={formik.errors.name}
           disabled={formik.isSubmitting}
+          ref={todoInputRef}
         />
         <Form.Label htmlFor="todoInput" className="text-center w-100 text-center">Что нужно сделать?</Form.Label>
         <Form.Control.Feedback className="align-self-center" type="invalid" tooltip>{formik.errors.name}</Form.Control.Feedback>
