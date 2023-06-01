@@ -1,6 +1,6 @@
 import { Container, Card, Button } from 'react-bootstrap';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 
 const Todos = () => (
   <Container className="vh-100 d-flex align-items-center">

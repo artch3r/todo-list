@@ -1,7 +1,7 @@
 import { ListGroup, Form, Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
-import { completeTodo } from '../slices/todosSlice';
+import { completeTodo } from '../../../slices/todosSlice';
 
 const todoVariantMap = {
   active: 'primary',

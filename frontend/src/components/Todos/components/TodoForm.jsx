@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { uniqueId } from 'lodash';
-import { addTodo } from '../slices/todosSlice';
+import { addTodo } from '../../../slices/todosSlice';
 
 const TodoForm = () => {
   const dispatch = useDispatch();

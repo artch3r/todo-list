@@ -1,4 +1,4 @@
-import Todos from './components/Todos.jsx';
+import Todos from './components/Todos/Todos.jsx';
 
 const App = () => (
   <Todos />
