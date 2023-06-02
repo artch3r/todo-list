@@ -24,7 +24,7 @@ const TodoItem = ({ todo }) => {
       className="d-flex gap-2"
       variant={todoVariantMap[todo.status]}
     >
-      <Form.Check className="pt-1" type="radio" aria-label="radio 1" onClick={handleFormCheck(todo.id, todo.status, dispatch)} />
+      <Form.Check className="pt-1" type="checkbox" onClick={handleFormCheck(todo.id, todo.status, dispatch)} />
       <p className={cn('m-0 pt-1', { 'text-decoration-line-through': todo.status === 'finished' })}>{todo.name}</p>
       <Dropdown className="ms-auto">
         <Dropdown.Toggle variant={todoVariantMap[todo.status]} id="dropdown-basic" size="sm" />
