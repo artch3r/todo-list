@@ -10,8 +10,9 @@ const todosSlice = createSlice({
   initialState,
   reducers: {
     addTodo: todosAdapter.addOne,
-    removeTodo: todosAdapter.removeOne,
+    deleteTodo: todosAdapter.removeOne,
     completeTodo: todosAdapter.updateOne,
+    renameTodo: todosAdapter.updateOne,
     setDisplayedTodos: (state, { payload }) => {
       state.displayedTodos = payload;
     },
@@ -52,6 +53,8 @@ export const selectCurrentTodos = createSelector(
   },
 );
 
-export const { addTodo, completeTodo } = todosSlice.actions;
+export const {
+  addTodo, deleteTodo, renameTodo, completeTodo,
+} = todosSlice.actions;
 
 export default todosSlice.reducer;

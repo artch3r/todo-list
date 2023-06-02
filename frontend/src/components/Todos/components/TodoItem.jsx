@@ -2,6 +2,7 @@ import { ListGroup, Form, Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { completeTodo } from '../../../slices/todosSlice';
+import { openModal } from '../../../slices/modalSlice';
 
 const todoVariantMap = {
   active: 'primary',
@@ -12,6 +13,8 @@ const handleFormCheck = (id, status, dispatch) => () => {
   const newStatus = status === 'finished' ? 'active' : 'finished';
   dispatch(completeTodo({ id, changes: { status: newStatus } }));
 };
+
+const handleOpenModal = (type, extra, dispatch) => () => dispatch(openModal({ type, extra }));
 
 const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -26,8 +29,8 @@ const TodoItem = ({ todo }) => {
       <Dropdown className="ms-auto">
         <Dropdown.Toggle variant={todoVariantMap[todo.status]} id="dropdown-basic" size="sm" />
         <Dropdown.Menu>
-          <Dropdown.Item>Переименовать</Dropdown.Item>
-          <Dropdown.Item>Удалить</Dropdown.Item>
+          <Dropdown.Item onClick={handleOpenModal('renameTodo', todo, dispatch)}>Переименовать</Dropdown.Item>
+          <Dropdown.Item onClick={handleOpenModal('deleteTodo', todo, dispatch)}>Удалить</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </ListGroup.Item>

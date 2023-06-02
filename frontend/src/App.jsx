@@ -1,7 +1,11 @@
 import Todos from './components/Todos/Todos.jsx';
+import CurrentModal from './components/Modal/Modal.jsx';
 
 const App = () => (
-  <Todos />
+  <>
+    <Todos />
+    <CurrentModal />
+  </>
 );
 
 export default App;
