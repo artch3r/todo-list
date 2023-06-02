@@ -25,7 +25,7 @@ const todosSelectors = todosAdapter.getSelectors(selectTodosInfo);
 
 const selectTodos = todosSelectors.selectAll;
 
-const selectDisplayedTodos = createSelector(
+export const selectDisplayedTodos = createSelector(
   selectTodosInfo,
   (todosInfo) => todosInfo.displayedTodos,
 );
@@ -54,7 +54,7 @@ export const selectCurrentTodos = createSelector(
 );
 
 export const {
-  addTodo, deleteTodo, renameTodo, completeTodo,
+  addTodo, deleteTodo, renameTodo, completeTodo, setDisplayedTodos,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;
