@@ -1,5 +1,6 @@
 import { Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { selectModalInfo, closeModal } from '../../slices/modalSlice';
 import DeleteConfirmation from './components/DeleteConfirmation';
 import TodoRenameForm from './components/TodoRenameForm';
@@ -7,6 +8,7 @@ import TodoRenameForm from './components/TodoRenameForm';
 const onHide = (dispatch) => () => dispatch(closeModal());
 
 const CurrentModal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isOpened, type, extra } = useSelector(selectModalInfo);
 
@@ -25,7 +27,7 @@ const CurrentModal = () => {
     >
       <Modal.Header closeButton>
         <Modal.Title>
-          {type && type}
+          {type && t(`modal.${type}`)}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

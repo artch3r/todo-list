@@ -3,9 +3,11 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { renameTodo } from '../../../slices/todosSlice';
 
 const TodoRenameForm = ({ extra, onHide }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const inputRef = useRef();
 
@@ -46,15 +48,15 @@ const TodoRenameForm = ({ extra, onHide }) => {
           ref={inputRef}
         />
         <Form.Label htmlFor="name" className="visually-hidden">
-          Переименовать дело
+          {t('modal.renameTodo')}
         </Form.Label>
         <Form.Control.Feedback type="invalid" tooltip>
-          {formik.errors.name}
+          {t(`errors.${formik.errors.name}`)}
         </Form.Control.Feedback>
       </Form.Group>
       <div className="d-flex justify-content-end">
-        <Button type="button" variant="secondary" className="me-2" disabled={formik.isSubmitting} onClick={onHide}>Отменить</Button>
-        <Button type="submit" variant="primary" disabled={formik.isSubmitting || formik.errors.name}>Подтвердить</Button>
+        <Button type="button" variant="secondary" className="me-2" disabled={formik.isSubmitting} onClick={onHide}>{t('modal.cancel')}</Button>
+        <Button type="submit" variant="primary" disabled={formik.isSubmitting || formik.errors.name}>{t('modal.submit')}</Button>
       </div>
     </Form>
   );
