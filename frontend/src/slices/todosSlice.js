@@ -34,22 +34,13 @@ export const selectCurrentTodos = createSelector(
   selectTodos,
   selectDisplayedTodos,
   (todos, displayedTodos) => {
-    let currentTodos;
-    switch (displayedTodos) {
-      case 'all':
-        currentTodos = todos;
-        break;
-      case 'active':
-        currentTodos = todos.filter((todo) => todo.status === 'active');
-        break;
-      case 'finished':
-        currentTodos = todos.filter((todo) => todo.status === 'finished');
-        break;
-      default:
-        break;
-    }
+    const todosMap = {
+      all: todos,
+      active: todos.filter((todo) => todo.status === 'active'),
+      completed: todos.filter((todo) => todo.status === 'completed'),
+    };
 
-    return currentTodos;
+    return todosMap[displayedTodos];
   },
 );
 

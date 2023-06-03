@@ -13,7 +13,7 @@ const chooseButtonVariant = (buttonType, displayedTodosType) => {
   const variantMap = {
     all: 'secondary',
     active: 'primary',
-    finished: 'success',
+    completed: 'success',
   };
 
   return variantMap[buttonType];
@@ -28,7 +28,7 @@ const TodosFooter = () => {
     <ButtonGroup className="w-75 px-5 mx-auto" size="sm">
       <Button className="w-25 border" variant={chooseButtonVariant('all', displayedTodosType)} onClick={switchDisplayedTodos('all', dispatch)}>{t('todos.footer.allTodos')}</Button>
       <Button className="w-25 border" variant={chooseButtonVariant('active', displayedTodosType)} onClick={switchDisplayedTodos('active', dispatch)}>{t('todos.footer.activeTodos')}</Button>
-      <Button className="w-25 border" variant={chooseButtonVariant('finished', displayedTodosType)} onClick={switchDisplayedTodos('finished', dispatch)}>{t('todos.footer.completedTodos')}</Button>
+      <Button className="w-25 border" variant={chooseButtonVariant('completed', displayedTodosType)} onClick={switchDisplayedTodos('completed', dispatch)}>{t('todos.footer.completedTodos')}</Button>
     </ButtonGroup>
   );
 };

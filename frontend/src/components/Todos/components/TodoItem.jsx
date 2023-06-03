@@ -6,11 +6,11 @@ import { openModal } from '../../../slices/modalSlice';
 
 const todoVariantMap = {
   active: 'primary',
-  finished: 'success',
+  completed: 'success',
 };
 
 const handleFormCheck = (id, status, dispatch) => () => {
-  const newStatus = status === 'finished' ? 'active' : 'finished';
+  const newStatus = status === 'completed' ? 'active' : 'completed';
   dispatch(completeTodo({ id, changes: { status: newStatus } }));
 };
 
@@ -24,8 +24,8 @@ const TodoItem = ({ todo }) => {
       className="d-flex gap-2"
       variant={todoVariantMap[todo.status]}
     >
-      <Form.Check className="pt-1" checked={todo.status === 'finished'} type="checkbox" onChange={handleFormCheck(todo.id, todo.status, dispatch)} />
-      <p className={cn('m-0 pt-1', { 'text-decoration-line-through': todo.status === 'finished' })}>{todo.name}</p>
+      <Form.Check className="pt-1" checked={todo.status === 'completed'} type="checkbox" onChange={handleFormCheck(todo.id, todo.status, dispatch)} />
+      <p className={cn('m-0 pt-1', { 'text-decoration-line-through': todo.status === 'completed' })}>{todo.name}</p>
       <Dropdown className="ms-auto">
         <Dropdown.Toggle variant={todoVariantMap[todo.status]} id="dropdown-basic" size="sm" />
         <Dropdown.Menu>
