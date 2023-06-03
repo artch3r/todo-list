@@ -29,7 +29,7 @@ const CurrentModal = () => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ModalBodyInner type={type} extra={extra} onHide={onHide(dispatch)} />
+        {type && <ModalBodyInner type={type} extra={extra} onHide={onHide(dispatch)} />}
       </Modal.Body>
     </Modal>
   );
