@@ -29,6 +29,7 @@ const TodoForm = () => {
       resetForm();
       setSubmitting(false);
     },
+    validateOnMount: true,
   });
 
   return (
@@ -41,7 +42,7 @@ const TodoForm = () => {
           placeholder={t('todos.body.inputPlaceholder')}
           value={formik.values.name}
           onChange={formik.handleChange}
-          isInvalid={formik.errors.name}
+          isInvalid={formik.errors.name && formik.touched.name}
           disabled={formik.isSubmitting}
           ref={todoInputRef}
         />
@@ -51,7 +52,7 @@ const TodoForm = () => {
       <Button
         type="submit"
         className="w-25 mt-2 align-self-center"
-        disabled={formik.isSubmitting || formik.errors.name}
+        disabled={formik.isSubmitting}
       >
         {t('todos.body.addButton')}
       </Button>

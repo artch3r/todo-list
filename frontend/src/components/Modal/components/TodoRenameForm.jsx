@@ -43,7 +43,7 @@ const TodoRenameForm = ({ extra, onHide }) => {
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          isInvalid={formik.errors.name}
+          isInvalid={formik.errors.name && formik.touched.name}
           disabled={formik.isSubmitting}
           ref={inputRef}
         />
@@ -56,7 +56,7 @@ const TodoRenameForm = ({ extra, onHide }) => {
       </Form.Group>
       <div className="d-flex justify-content-end">
         <Button type="button" variant="secondary" className="me-2" disabled={formik.isSubmitting} onClick={onHide}>{t('modal.cancel')}</Button>
-        <Button type="submit" variant="primary" disabled={formik.isSubmitting || formik.errors.name}>{t('modal.submit')}</Button>
+        <Button type="submit" variant="primary" disabled={formik.isSubmitting}>{t('modal.submit')}</Button>
       </div>
     </Form>
   );
