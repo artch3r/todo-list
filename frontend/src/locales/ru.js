@@ -19,7 +19,7 @@ const ru = {
       submit: 'Подтвердить',
     },
     errors: {
-      requiredField: 'Обязательное поле',
+      requiredField: 'Не может быть пустым',
       incorrectMinLength: 'От 3 символов',
       incorrectMaxLength: 'До 65 символов',
     },
