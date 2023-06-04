@@ -7,9 +7,9 @@ const ru = {
         addButton: 'Добавить',
       },
       footer: {
-        allTodos: 'Все',
-        activeTodos: 'Активные',
-        completedTodos: 'Завершенные',
+        all: 'Все',
+        active: 'Активные',
+        completed: 'Завершенные',
       },
     },
     modal: {

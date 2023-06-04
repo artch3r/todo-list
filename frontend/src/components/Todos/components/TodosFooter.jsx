@@ -19,16 +19,21 @@ const chooseButtonVariant = (buttonType, displayedTodosType) => {
   return variantMap[buttonType];
 };
 
+const createButton = (type, displayedTodosType, dispatch, t) => (
+  <Button className="w-25 border" variant={chooseButtonVariant(type, displayedTodosType)} onClick={switchDisplayedTodos(type, dispatch)}>
+    {t(`todos.footer.${type}`)}
+  </Button>
+);
+
 const TodosFooter = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const displayedTodosType = useSelector(selectDisplayedTodos);
+  const buttonTypes = ['all', 'active', 'completed'];
 
   return (
-    <ButtonGroup className="w-75 px-5 mx-auto" size="sm">
-      <Button className="w-25 border" variant={chooseButtonVariant('all', displayedTodosType)} onClick={switchDisplayedTodos('all', dispatch)}>{t('todos.footer.allTodos')}</Button>
-      <Button className="w-25 border" variant={chooseButtonVariant('active', displayedTodosType)} onClick={switchDisplayedTodos('active', dispatch)}>{t('todos.footer.activeTodos')}</Button>
-      <Button className="w-25 border" variant={chooseButtonVariant('completed', displayedTodosType)} onClick={switchDisplayedTodos('completed', dispatch)}>{t('todos.footer.completedTodos')}</Button>
+    <ButtonGroup className="w-50  px-5 mx-auto" size="sm">
+      {buttonTypes.map((type) => createButton(type, displayedTodosType, dispatch, t))}
     </ButtonGroup>
   );
 };
