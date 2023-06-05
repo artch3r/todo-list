@@ -20,7 +20,7 @@ const chooseButtonVariant = (buttonType, displayedTodosType) => {
 };
 
 const createButton = (type, displayedTodosType, dispatch, t) => (
-  <Button className="w-25 border" variant={chooseButtonVariant(type, displayedTodosType)} onClick={switchDisplayedTodos(type, dispatch)}>
+  <Button className="w-25 border" key={type} variant={chooseButtonVariant(type, displayedTodosType)} onClick={switchDisplayedTodos(type, dispatch)}>
     {t(`todos.footer.${type}`)}
   </Button>
 );
