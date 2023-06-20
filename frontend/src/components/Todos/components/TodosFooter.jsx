@@ -1,7 +1,7 @@
 import { ButtonGroup, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { setDisplayedTodos, selectDisplayedTodos } from '../../../slices/todosSlice';
+import { setDisplayedTodos, selectDisplayedTodos, selectTodos } from '../../../slices/todosSlice';
 
 const switchDisplayedTodos = (nextType, dispatch) => () => dispatch(setDisplayedTodos(nextType));
 
@@ -19,21 +19,27 @@ const chooseButtonVariant = (buttonType, displayedTodosType) => {
   return variantMap[buttonType];
 };
 
-const createButton = (type, displayedTodosType, dispatch, t) => (
-  <Button className="w-25 border" key={type} variant={chooseButtonVariant(type, displayedTodosType)} onClick={switchDisplayedTodos(type, dispatch)}>
-    {t(`todos.footer.${type}`)}
-  </Button>
-);
-
-const TodosFooter = () => {
+const FooterButton = ({ type }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const displayedTodosType = useSelector(selectDisplayedTodos);
+  const todos = useSelector(selectTodos);
+  const curretTypeTodosCount = type === 'all' ? todos.length : todos.filter((todo) => todo.status === type).length;
+
+  return (
+    <Button className="w-25 border" key={type} variant={chooseButtonVariant(type, displayedTodosType)} onClick={switchDisplayedTodos(type, dispatch)}>
+      {t(`todos.footer.${type}`)}
+      {` (${curretTypeTodosCount})`}
+    </Button>
+  );
+};
+
+const TodosFooter = () => {
   const buttonTypes = ['all', 'active', 'completed'];
 
   return (
-    <ButtonGroup className="w-50  px-5 mx-auto" size="sm">
-      {buttonTypes.map((type) => createButton(type, displayedTodosType, dispatch, t))}
+    <ButtonGroup className="w-50 mb-2 mx-auto" size="sm">
+      {buttonTypes.map((type) => <FooterButton key={type} type={type} />)}
     </ButtonGroup>
   );
 };

@@ -23,7 +23,7 @@ const selectTodosInfo = (state) => state.todosInfo;
 
 const todosSelectors = todosAdapter.getSelectors(selectTodosInfo);
 
-const selectTodos = todosSelectors.selectAll;
+export const selectTodos = todosSelectors.selectAll;
 
 export const selectDisplayedTodos = createSelector(
   selectTodosInfo,
